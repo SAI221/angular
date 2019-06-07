@@ -1,66 +1,68 @@
 <mat-sidenav-container >
-  <mat-sidenav #drawer mode="side" opened  role="navigation">
-    <mat-nav-list class="example-container">
-      <button fxHide="true" fxHide.xs="false" mat-icon-button [matMenuTriggerFor]="notifications"
-        matTooltip="notifications">
-        <mat-icon>notifications_on</mat-icon>
-      </button>
-      <mat-menu #notifications="matMenu">
-      </mat-menu>
-      <button mat-menu-item (click)="navigateTo('welcome/main-notes')">
-        <mat-icon>notes</mat-icon>
-        <span>Notes</span>
-      </button>
-      <button mat-menu-item (click)="navigateTo('welcome/remainder')">
-        <mat-icon>notifications</mat-icon>
-        <span>Remainder</span>
-      </button>
-      <mat-divider></mat-divider><br>
-      <span>
-        <font size="1" face="arial" text-align="center">LABELS</font>
-      </span>
-      <button mat-menu-item (click)="editLabel()">
-        <mat-icon>edit</mat-icon>
-        <span>Edit Labels</span>
-      </button>
-      <div *ngFor="let label of labels">
-        <button mat-menu-item (click)="notesWithList(label,'welcome/label')">
-          <mat-icon>label</mat-icon> &nbsp;
-          <span>{{label.labelName}}</span>
+    <!-- <mat-sidenav #drawer mode="side" opened  role="navigation"> -->
+        <mat-sidenav #sidenav mode="side" opened="true" class="sidenav"
+         [fixedInViewport]="true"> <!--Sidenav	</mat-sidenav> -->
+      <mat-nav-list class="example-container">
+        <button fxHide="true" fxHide.xs="false" mat-icon-button [matMenuTriggerFor]="notifications"
+          matTooltip="notifications">
+          <mat-icon>notifications_on</mat-icon>
         </button>
-      </div>
-      <br>
-      <mat-divider></mat-divider><br>
-      <button mat-menu-item (click)="navigateTo('home/archive-notes')">
-        <mat-icon>archive</mat-icon>
-        <span>Archive</span>
-      </button>
-      <button mat-menu-item (click)="navigateTo('home/trash-notes')">
-        <mat-icon>delete</mat-icon>
-        <span>Trash</span>
-      </button>
-      <mat-divider></mat-divider><br>
-      <button mat-menu-item fxHide="true" fxHide.xs="false">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button>
-      <!-- <button mat-menu-item fxHide="true" fxHide.xs="false">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button>
-      <button mat-menu-item fxHide="true" fxHide.xs="false">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button>
-      <button mat-menu-item fxHide="true" fxHide.xs="false">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button> -->
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+        <mat-menu #notifications="matMenu">
+        </mat-menu>
+        <button mat-menu-item (click)="navigateTo('welcome/main-notes')">
+          <mat-icon>notes</mat-icon>
+          <span>Notes</span>
+        </button>
+        <button mat-menu-item (click)="navigateTo('welcome/remainder')">
+          <mat-icon>notifications</mat-icon>
+          <span>Remainder</span>
+        </button>
+        <mat-divider></mat-divider><br>
+        <span>
+          <font size="1" face="arial" text-align="center">LABELS</font>
+        </span>
+        <button mat-menu-item (click)="editLabel()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit Labels</span>
+        </button>
+        <div *ngFor="let label of labels">
+          <button mat-menu-item (click)="notesWithList(label,'welcome/label')">
+            <mat-icon>label</mat-icon> &nbsp;
+            <span>{{label.labelName}}</span>
+          </button>
+        </div>
+        <br>
+        <mat-divider></mat-divider><br>
+        <button mat-menu-item (click)="navigateTo('welcome/archive-notes')">
+          <mat-icon>archive</mat-icon>
+          <span>Archive</span>
+        </button>
+        <button mat-menu-item (click)="navigateTo('welcome/trash-notes')">
+          <mat-icon>delete</mat-icon>
+          <span>Trash</span>
+        </button>
+        <mat-divider></mat-divider><br>
+        <button mat-menu-item fxHide="true" fxHide.xs="false">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item fxHide="true" fxHide.xs="false">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item fxHide="true" fxHide.xs="false">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item fxHide="true" fxHide.xs="false">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button> 
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

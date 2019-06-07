@@ -1,7 +1,10 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpHandlerService } from 'src/app/service/http-handler.service';
+import { NoteServiceService } from 'src/app/service/note-service.service';
+import { HttpService } from 'src/app/service/http.service';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-notesearchbody',
@@ -18,13 +21,19 @@ export class NotesearchbodyComponent implements OnInit {
   selectedMoment = new Date();
   public min = new Date();
   public mytoken = localStorage.getItem('token');
+
+
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
-              private service: HttpHandlerService) { }
+              private router: Router, private noteService: NoteServiceService,
+              private httpUtil: HttpService, private snackBar: MatSnackBar,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
+
     this.createNoteForm = this.formBuilder.group({
       title: [''],
-      description: ['']
+      description: [''],
+      remainder: ''
     });
   }
   get f() { return this.createNoteForm.controls; }
@@ -39,11 +48,54 @@ export class NotesearchbodyComponent implements OnInit {
     }
     console.log(this.mytoken);
     console.log(note);
-    this.service.createNote(note).subscribe(response => {
+    this.noteService.createNote(note).subscribe(response => {
       this.eventCreate.emit(true);
-      // this.snackBar.open("success", "note created", {
-      //   duration: 2000
-      // });
+      this.snackBar.open('success', 'note created', {
+        duration: 2000
+      });
+    });
+  }
+
+  archiveNoteSave(note) {
+    const newNote = {
+      ...note,
+      archive: true
+    };
+    console.log(newNote.archive);
+    this.onSubmit(newNote);
+
+  }
+
+  pinnedNoteSave(note) {
+    const newNote = {
+      ...note,
+      pinned: true,
+    };
+    this.onSubmit(newNote);
+  }
+
+  updateColor(data) {
+    this.onSubmit(data.note);
+  }
+
+  public saveRemainder(selectedMoment, note) {
+    const newNote = {
+      ...note,
+      remainder: selectedMoment,
+    };
+    this.onSubmit(newNote);
+  }
+
+  public dailogCollaborator(note) {
+    if (note.title === '' && note.description === '') {
+      return;
+    }
+    const dialogRef = this.dialog.open(CollaboratorComponent, {
+      width: '500px',
+      data: note
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

@@ -32,15 +32,20 @@
         </mat-form-field>
       </div>
       <div class="form-group">
-        <mat-card-actions>
+        <!-- <mat-card-actions>
           <div class="button-row">
             <button mat-raised-button [disabled]="loginForm.invalid" >Sign In</button>
             <div class="forgot"><a class="btn btn-link" routerLink="/register">Register</a></div>
           </div>
-
-
           <div class="new-user">New user?
             <a class="btn btn-link">Sign Up</a>
+          </div>
+        </mat-card-actions> -->
+        <mat-card-actions>
+          <button color="btn-primary" [disabled]="loading" class="btn btn-primary"><b>Sign In</b></button>
+          <div align="center"><a class="btn btn-link" routerLink="/passwordforgot">Forgot password?</a></div>
+          <div>New user?
+            <a routerLink="/register" class="btn btn-link">Sign Up</a>
           </div>
         </mat-card-actions>
       </div>

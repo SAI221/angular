@@ -1,98 +1,99 @@
 <div class="fixed">
-  <mat-toolbar class="navbar">
-    <mat-toolbar-row>
-      <!-- menu -->
-      <button id="menubuttn" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggle()"
-        matTooltip="Menu">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <!-- Image -->
-      <p fxHide.xs="true"> <span><img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"
-            style="width:30px;"></span></p>
-
-      <!-- keep -->
-      <p id="text" fxHide.xs="true">Keep</p>
-
-      <!-- Search -->
-      <div id="searchbox" fxLayoutGap="2%">
-        <div fxFlex="0%">
-          <button mat-icon-button (click)="searchtest()">
-            <mat-icon id="buttn">search</mat-icon>
+    <mat-toolbar class="navbar">
+      <mat-toolbar-row>
+        <!-- menu -->
+        <button id="menubuttn" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleSideNav()"
+          matTooltip="Menu">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <!-- Image -->
+        <p fxHide.xs="true"> <span><img src="data:image/png;base64,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" style="width:30px;"></span></p>
+  
+        <!-- keep -->
+        <p id="text" fxHide.xs="true">Keep</p>
+  
+        <!-- Search -->
+        <div id="searchbox" fxLayoutGap="2%">
+          <div fxFlex="0%">
+            <button mat-icon-button (click)="searchtest()">
+              <mat-icon id="buttn">search</mat-icon>
+            </button>
+          </div>
+          <div fxFlex="100%">
+            <input matInput id="input" type="text" placeholder="search" name="searchString" (click)="searchtest()"
+              [(ngModel)]="searchString">
+          </div>
+          <div>
+            <button mat-button *ngIf="searchString" matSuffix mat-icon-button class="button" (click)="clearSearch()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+  
+        <!-- Refresh -->
+        <a mat-icon-button [routerLink]="home" routerLinkActive="active" matTooltip="Refresh">
+          <mat-icon>refresh</mat-icon>
+        </a>
+  
+        <!-- List & Grid -->
+        <button mat-icon-button fxHide.xs="true" fxShow.sm="false" fxShow.md="true" fxShow.lg="true">
+          <mat-icon (click)="viewGrid()" *ngIf="!grid">view_stream</mat-icon>
+          <mat-icon (click)="viewGrid()" *ngIf="grid">view_module</mat-icon>
+        </button>
+  
+        <!-- Settings -->
+        <button fxHide.xs="true" mat-icon-button [matMenuTriggerFor]="settings" matTooltip="Settings">
+          <mat-icon>settings</mat-icon>
+        </button>
+        <mat-menu #settings="matMenu">
+          <button mat-menu-item>
+            <span>Settings</span>
           </button>
-        </div>
-        <div fxFlex="100%">
-          <input matInput id="input" type="text" placeholder="search" name="searchString" (click)="searchtest()"
-            [(ngModel)]="searchString">
-        </div>
-        <div>
-          <button mat-button *ngIf="searchString" matSuffix mat-icon-button class="button" (click)="clearSearch()">
-            <mat-icon>close</mat-icon>
+          <button mat-menu-item>
+            <span>Send feedback</span>
           </button>
-        </div>
-      </div>
-
-      <!-- Refresh -->
-      <a mat-icon-button [routerLink]="welcome" routerLinkActive="active" matTooltip="Refresh">
-        <mat-icon>refresh</mat-icon>
-      </a>
-
-      <!-- List & Grid -->
-      <button mat-icon-button fxHide.xs="true" fxShow.sm="false" fxShow.md="true" fxShow.lg="true">
-        <mat-icon (click)="viewGrid()" *ngIf="!grid">view_stream</mat-icon>
-        <mat-icon (click)="viewGrid()" *ngIf="grid">view_module</mat-icon>
-      </button>
-
-      <!-- Settings -->
-      <button fxHide.xs="true" mat-icon-button [matMenuTriggerFor]="settings" matTooltip="Settings">
-        <mat-icon>settings</mat-icon>
-      </button>
-      <mat-menu #settings="matMenu">
-        <button mat-menu-item>
-          <span>Settings</span>
-        </button>
-        <button mat-menu-item>
-          <span>Send feedback</span>
-        </button>
-        <button mat-menu-item>
-          <span>Help</span>
-        </button>
-        <button mat-menu-item>
-          <span>App downloads</span>
-        </button>
-        <button mat-menu-item>
-          <span>Keyboad Shortcuts</span>
-        </button>
-      </mat-menu>
-
-      <!-- notfications -->
-      <button fxHide.xs="true" mat-icon-button [matMenuTriggerFor]="notifications" matTooltip="notifications">
-        <mat-icon>notifications_on</mat-icon>
-      </button>
-      <mat-menu #notifications="matMenu">
-      </mat-menu>
-
-      <!-- User -->
-      <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="menu">
-        <i id="accountcircle" class="material-icons" >account_circle</i>
-        <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%" width="60%">
-      </button>
-      <mat-menu #menu="matMenu" class="morecard">
-        <div>
-          <button mat-menu-item (click)="openDialog()">
-            <mat-icon>image</mat-icon>Change Picture
+          <button mat-menu-item>
+            <span>Help</span>
           </button>
-        </div>
-        <mat-divider></mat-divider>
-        <div fxLayout="row">
-          <button mat-menu-item (click)="logout()">
-            <mat-icon>logout</mat-icon>Sign out
+          <button mat-menu-item>
+            <span>App downloads</span>
           </button>
-        </div>
-      </mat-menu>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</div>
-<mat-divider></mat-divider>
-
-<!-- side navigation bar -->
-<!-- <app-sidenavbar [toggleSidebar]="toggleNav" [grid]="grid"></app-sidenavbar> -->
+          <button mat-menu-item>
+            <span>Keyboad Shortcuts</span>
+          </button>
+        </mat-menu>
+  
+        <!-- notfications -->
+        <button fxHide.xs="true" mat-icon-button [matMenuTriggerFor]="notifications" matTooltip="notifications">
+          <mat-icon>notifications_on</mat-icon>
+        </button>
+        <mat-menu #notifications="matMenu">
+        </mat-menu>
+  
+        <!-- User -->
+        <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="menu">
+          <!-- <i id="accountcircle" class="material-icons" >account_circle</i>
+          <img class="image"  [src]="imageData" height="60%"
+            width="60%"> -->
+        </button>
+        <mat-menu #menu="matMenu" class="morecard">
+          <div>
+            <button mat-menu-item (click)="openDialog()">
+              <mat-icon>image</mat-icon>Change Picture
+            </button>
+          </div>
+          <mat-divider></mat-divider>
+          <div fxLayout="row">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>Sign out
+            </button>
+          </div>
+        </mat-menu>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <mat-divider></mat-divider>
+  
+  <!-- side navigation bar -->
+  <app-sidenavbar [toggleSidebar]="toggleNav" [grid]="grid"></app-sidenavbar>
+ 

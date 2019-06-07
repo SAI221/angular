@@ -1,0 +1,12 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+    <div *ngIf="searchString===''" class="empty">
+      <mat-icon class="searchicon">search</mat-icon>
+      <div class="message">Enter something on search bar</div>
+    </div>
+  
+    <div fxFlex="40%" *ngIf="searchString!==''">
+      Based on note title
+      <!-- <app-pin-note [notes]="notes | searchNotes:searchString" [grid]="grid" (updateNoteEvent)="onUpdateNote($event)">
+      </app-pin-note> -->
+    </div>
+  </div>
