@@ -37,10 +37,14 @@ export class UserService {
   }
 
   forgotpassword(user) {
-    return this.httpUtil.postService(environment.base_url + 'forgot', user);
+    return this.httpUtil.postServiceForNoteCreate(environment.base_url + 'forgot', this.httpheaders, user);
   }
 
   resetpassword(user, id) {
     return this.httpUtil.putService(environment.base_url + 'reset/' + id, user, id);
+  }
+
+  logged() {
+    return !!localStorage.getItem('token');
   }
 }

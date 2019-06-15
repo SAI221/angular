@@ -29,7 +29,7 @@ export class NoteComponent implements OnInit {
     tooltip: 'image upload'
   },
   {
-    name: 'archive',
+    name: 'isArchive',
     tooltip: 'archive'
   },
   {

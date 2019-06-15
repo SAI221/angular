@@ -10,6 +10,8 @@ import { ViewNoteComponent } from './components/view-note/view-note.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { LabelComponent } from './components/label/label.component';
+import { RemainderComponent } from './components/remainder/remainder.component';
+import { AuthGuard } from './core/service/auth/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -17,12 +19,14 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'home', component: HomeComponent ,
+  canActivate: [AuthGuard],
   children: [
     { path: '', redirectTo: 'viewnotes', pathMatch: 'full' },
     { path: 'archivenote', component: ArchiveNotesComponent},
     { path: 'trashednote', component: TrashedNotesComponent},
     { path: 'viewnotes', component: ViewNoteComponent },
-    {path: 'label' , component: LabelComponent}
+    {path: 'label' , component: LabelComponent},
+    {path: 'remainder' , component: RemainderComponent}
   ]
 
 },

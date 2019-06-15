@@ -23,20 +23,20 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgotpasswordForm = this.formBuilder.group({
-      emailId: ['', Validators.required],
+      email: ['', Validators.required],
     });
   }
 
   get f() { return this.forgotpasswordForm.controls; }
 
-  onSubmit(emailId) {
+  onSubmit(email) {
     this.submitted = true;
 
     if (this.forgotpasswordForm.invalid) {
       return;
     }
-    console.log(emailId);
-    this.userService.forgotpassword(emailId).subscribe(response => {
+    console.log(email);
+    this.userService.forgotpassword(email).subscribe(response => {
       console.log('Reset password intiated');
       this.snackBar.open('Email to reset your password has been sent your email-id', 'OK', {
         duration: 3000,

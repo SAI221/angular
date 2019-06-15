@@ -51,11 +51,12 @@ export class ViewNoteComponent implements OnInit {
 
 
   deleteNote(note) {
-    const newNote = {
-      ...note,
-      inTrash: true,
-    };
-    this.noteService.updateNote(newNote).subscribe(response => {
+    // const newNote = {
+    //   ...note,
+    //   inTrash: true,
+    // };
+    note.inTrash = true;
+    this.noteService.updateNote(note).subscribe(response => {
       this.snackBar.open('Sent to Trash ', 'OK', {
         duration: 3000,
       });
@@ -68,11 +69,12 @@ export class ViewNoteComponent implements OnInit {
   }
 
    sendToArchive(note) {
-    const newNote = {
-      ...note,
-      isArchive: true,
-    };
-    this.noteService.updateNote(newNote).subscribe(response => {
+    // const newNote = {
+    //   ...note,
+    //   isArchive: true,
+    // };
+    note.archive = true;
+    this.noteService.updateNote(note).subscribe(response => {
       this.snackBar.open('Sent to Archive ', 'OK', {
         duration: 3000,
       });
@@ -86,12 +88,13 @@ export class ViewNoteComponent implements OnInit {
 
 
    moveToPin(note) {
-    const newNote = {
+    // const newNote = {
 
-      ...note,
-      IsPinned: true
-    };
-    this.noteService.updateNote(newNote).subscribe(response => {
+    //   ...note,
+    //   isPinned: true
+    // };
+    note.pinned = true;
+    this.noteService.updateNote(note).subscribe(response => {
       this.snackBar.open('Pinned', 'OK', {
         duration: 3000,
       });
@@ -103,7 +106,11 @@ export class ViewNoteComponent implements OnInit {
 
 }
 
-addLabel(label) {
+addLabel(label, note) {
+  this.noteService.addLabelNote(note.noteId, label).subscribe(response => {
+    console.log(response);
+  }
+    );
 
 }
 

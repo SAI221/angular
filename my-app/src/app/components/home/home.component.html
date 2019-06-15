@@ -1,27 +1,16 @@
 <div fxLayout="row" fxLayoutAlign=" stretch">
     
     <mat-toolbar class="fixed-header" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
-   
-
-
-
-
+  
       <mat-toolbar-row> 
        <button  *ngIf="!abc"  aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" matTooltip="Menu">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button> 
 
-
-
-  
         <button *ngIf=abc  mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>arrow_drop_down</mat-icon>
           </button>
          
-        
-
-       
-
         <mat-menu #menu="matMenu">
             <button  mat-menu-item  (click)="navigateNotes()">
               <mat-icon>note_add</mat-icon>
@@ -55,11 +44,6 @@
 
             </ng-template>
 
-
-
-
-
-
         <span><img src="./assets/image/keep-512.png" style="width:50px;"></span>
         &nbsp;&nbsp;
         <span>
@@ -81,10 +65,13 @@
         <!-- <mat-slide-toggle (click)=hideButton()></mat-slide-toggle> -->
 
 
-        <a mat-button routerLink="/home" routerLinkActive="active" matTooltip="Refresh">
+        <!-- <a mat-button routerLink="/home" routerLinkActive="active" matTooltip="Refresh">
           <mat-icon>refresh</mat-icon>
-        </a>
-
+        </a> -->
+        <button mat-icon-button (click)="reload()" matTooltip="Refresh">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      
         <!-- <mat-icon matSuffix (click)="hide = !hide" matTooltip="list and grid">{{hide ? 'view_module' : 'view_agenda'}}</mat-icon>
         &nbsp;
 &nbsp; -->
@@ -240,11 +227,8 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu  #user="matMenu">
-          <button  mat-menu-item >
-            <mat-icon >logout</mat-icon>
-            <a mat-button routerLink="/login">
-              <span>Logout</span>
-            </a>
+          <button    mat-icon-button (click)="logout()" matTooltip="LogOut">
+            <mat-icon >logout</mat-icon> Logout
           </button>
         </mat-menu>
       

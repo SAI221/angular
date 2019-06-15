@@ -21,6 +21,9 @@ export class HttpService {
   deleteService(url, header) {
     return this.http.delete<any>(url, header);
   }
+  // postServiceWithHeader(url, string, headers) {
+  //   return this.http.post<any>(url, string, headers);
+  // }
 
   postServiceWithParam(url, params) {
     return this.http.post<any>(url, null, params);

@@ -21,6 +21,8 @@ import { ViewNoteComponent } from './components/view-note/view-note.component';
 import { NoteComponent } from './components/note/note.component';
 import { LabelComponent } from './components/label/label.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { RemainderComponent } from './components/remainder/remainder.component';
+import { AuthGuard } from './core/service/auth/auth.guard';
 
 
 
@@ -34,7 +36,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     LabelComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-
+    RemainderComponent,
     UpdateNoteComponent,
     ArchiveNotesComponent,
     TrashedNotesComponent,
@@ -42,7 +44,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
     SideNavComponent,
     ViewNoteComponent,
     NoteComponent,
-
     MoreButtonDirective,
 
   ],
@@ -54,15 +55,10 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MatCardModule,
     MatExpansionModule,
     ColorPickerModule
-
-
-
-
-
   ],
   entryComponents: [UpdateNoteComponent, PinnedNoteComponent],
 
-  providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] }],
+  providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

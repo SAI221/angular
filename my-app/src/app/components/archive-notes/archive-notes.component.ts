@@ -23,7 +23,7 @@ export class ArchiveNotesComponent implements OnInit {
 
   getNotes() {
     console.log('token', this.mytoken);
-    this.noteService.notesInArchive(this.mytoken).subscribe(newNote => {
+    this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
     }
     );
@@ -56,12 +56,14 @@ export class ArchiveNotesComponent implements OnInit {
   }
 
   unArchive(note) {
-    const newNote = {
-      ...note,
-      isArchive: false,
-    };
-    console.log(newNote);
-    this.noteService.updateNote(newNote).subscribe(response => {
+    // const newNote = {
+    //   ...note,
+    //   isArchive: false,
+    //   // note.isArchive: false,
+    // };
+    note.archive = false;
+    console.log(note);
+    this.noteService.updateNote(note).subscribe(response => {
       this.snackBar.open(' unArchive ', 'OK', {
         duration: 3000,
       });
